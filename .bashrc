@@ -51,7 +51,7 @@ prompt_venv() {
     if [[ -n "$VIRTUAL_ENV" ]]; then
         # Extract the last directory name in the $VIRTUAL_ENV path
         venv_name=$(basename "$VIRTUAL_ENV")
-        printf "%b(%s)"  "${purple}" "${venv_name}" 
+		echo -e "${1}(${venv_name})";
     fi
 }
 
@@ -88,7 +88,7 @@ fi;
 
 PS1="\[${bold}\]"; # newline
 PS1+="\[${cyan}\]→ \[${reset}\]"; # `$` (and reset color)
-PS1+="\$(prompt_venv \"\[${reset}\]\")"; # virtual environment
+PS1+="\$(prompt_venv \"\[${purple}\]\")"; # virtual environment
 PS1+="\[${green}\]\W\[${reset}\]"; # working directory
 PS1+="\$(prompt_git \"\[${white}\] on \[${violet}\]\" \"\[${blue}\]\")\[${reset}\] "; # Git repository details
 export PS1;
@@ -96,3 +96,4 @@ export PS1;
 PS2="\[${yellow}\]→ \[${reset}\]";
 export PS2;
 alias code='codium';
+export PATH="/home/kanja/.local/bin:$PATH"
